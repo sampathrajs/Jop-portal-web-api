@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SankeerthiModelStoreContainer" CdmEntityContainer="SankeerthiEntities">
+    <EntitySetMapping Name="careerdetails">
+      <EntityTypeMapping TypeName="SankeerthiModel.careerdetail">
+        <MappingFragment StoreEntitySet="careerdetails">
+          <ScalarProperty Name="PK_MemberID" ColumnName="PK_MemberID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="AdditionalInformation" ColumnName="AdditionalInformation" />
+          <ScalarProperty Name="CareerObjective" ColumnName="CareerObjective" />
+          <ScalarProperty Name="SpecialQualification" ColumnName="SpecialQualification" />
+          <ScalarProperty Name="Declaration" ColumnName="Declaration" />
+          <ScalarProperty Name="Resume" ColumnName="Resume" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+          <ScalarProperty Name="EmailAlert" ColumnName="EmailAlert" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="educationdetails">
+      <EntityTypeMapping TypeName="SankeerthiModel.educationdetail">
+        <MappingFragment StoreEntitySet="educationdetails">
+          <ScalarProperty Name="PK_EducationDetailsID" ColumnName="PK_EducationDetailsID" />
+          <ScalarProperty Name="FK_MemberID" ColumnName="FK_MemberID" />
+          <ScalarProperty Name="InstituteName" ColumnName="InstituteName" />
+          <ScalarProperty Name="Degree" ColumnName="Degree" />
+          <ScalarProperty Name="TimePeriod_From" ColumnName="TimePeriod_From" />
+          <ScalarProperty Name="TimePeriod_To" ColumnName="TimePeriod_To" />
+          <ScalarProperty Name="Ed_Description" ColumnName="Ed_Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jobdetails">
+      <EntityTypeMapping TypeName="SankeerthiModel.jobdetail">
+        <MappingFragment StoreEntitySet="jobdetails">
+          <ScalarProperty Name="PK_JobID" ColumnName="PK_JobID" />
+          <ScalarProperty Name="FK_CategoryID" ColumnName="FK_CategoryID" />
+          <ScalarProperty Name="FK_EmployementID" ColumnName="FK_EmployementID" />
+          <ScalarProperty Name="FK_CompanyID" ColumnName="FK_CompanyID" />
+          <ScalarProperty Name="FK_CountryID" ColumnName="FK_CountryID" />
+          <ScalarProperty Name="FK_StateID" ColumnName="FK_StateID" />
+          <ScalarProperty Name="FK_ExpericeID" ColumnName="FK_ExpericeID" />
+          <ScalarProperty Name="jobdesgination" ColumnName="jobdesgination" />
+          <ScalarProperty Name="minsalary" ColumnName="minsalary" />
+          <ScalarProperty Name="maxsalary" ColumnName="maxsalary" />
+          <ScalarProperty Name="jobposteddate" ColumnName="jobposteddate" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="image" ColumnName="image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="languageproficiencies">
+      <EntityTypeMapping TypeName="SankeerthiModel.languageproficiency">
+        <MappingFragment StoreEntitySet="languageproficiency">
+          <ScalarProperty Name="PK_LanguageProficiencyID" ColumnName="PK_LanguageProficiencyID" />
+          <ScalarProperty Name="FK_MemberID" ColumnName="FK_MemberID" />
+          <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lkpcategories">
+      <EntityTypeMapping TypeName="SankeerthiModel.lkpcategory">
+        <MappingFragment StoreEntitySet="lkpcategory">
+          <ScalarProperty Name="PK_CategoryID" ColumnName="PK_CategoryID" />
+          <ScalarProperty Name="Categoryname" ColumnName="Categoryname" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lkpcompanies">
+      <EntityTypeMapping TypeName="SankeerthiModel.lkpcompany">
+        <MappingFragment StoreEntitySet="lkpcompany">
+          <ScalarProperty Name="PK_CompanyID" ColumnName="PK_CompanyID" />
+          <ScalarProperty Name="companyname" ColumnName="companyname" />
+          <ScalarProperty Name="companytype" ColumnName="companytype" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lkpcountries">
+      <EntityTypeMapping TypeName="SankeerthiModel.lkpcountry">
+        <MappingFragment StoreEntitySet="lkpcountry">
+          <ScalarProperty Name="PK_CountryID" ColumnName="PK_CountryID" />
+          <ScalarProperty Name="countryname" ColumnName="countryname" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lkpemployement_type">
+      <EntityTypeMapping TypeName="SankeerthiModel.lkpemployement_type">
+        <MappingFragment StoreEntitySet="lkpemployement_type">
+          <ScalarProperty Name="PK_EmployementID" ColumnName="PK_EmployementID" />
+          <ScalarProperty Name="employementtype" ColumnName="employementtype" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lkpexperiencetypes">
+      <EntityTypeMapping TypeName="SankeerthiModel.lkpexperiencetype">
+        <MappingFragment StoreEntitySet="lkpexperiencetype">
+          <ScalarProperty Name="PK_ExpericeID" ColumnName="PK_ExpericeID" />
+          <ScalarProperty Name="experiencetype" ColumnName="experiencetype" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lkpStates">
+      <EntityTypeMapping TypeName="SankeerthiModel.lkpState">
+        <MappingFragment StoreEntitySet="lkpState">
+          <ScalarProperty Name="PK_StateID" ColumnName="PK_StateID" />
+          <ScalarProperty Name="FK_CountryID" ColumnName="FK_CountryID" />
+          <ScalarProperty Name="statename" ColumnName="statename" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personaldetails">
+      <EntityTypeMapping TypeName="SankeerthiModel.personaldetail">
+        <MappingFragment StoreEntitySet="personaldetail">
+          <ScalarProperty Name="PK_MemberUserID" ColumnName="PK_MemberUserID" />
+          <ScalarProperty Name="FK_MemberID" ColumnName="FK_MemberID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usertables">
+      <EntityTypeMapping TypeName="SankeerthiModel.usertable">
+        <MappingFragment StoreEntitySet="usertable">
+          <ScalarProperty Name="PK_UserID" ColumnName="PK_UserID" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="lastlogin" ColumnName="lastlogin" />
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+          <ScalarProperty Name="isadmin" ColumnName="isadmin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="workhistories">
+      <EntityTypeMapping TypeName="SankeerthiModel.workhistory">
+        <MappingFragment StoreEntitySet="workhistory">
+          <ScalarProperty Name="PK_WorkHistoryID" ColumnName="PK_WorkHistoryID" />
+          <ScalarProperty Name="FK_MemberID" ColumnName="FK_MemberID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="Desgination" ColumnName="Desgination" />
+          <ScalarProperty Name="TimePeriod_From" ColumnName="TimePeriod_From" />
+          <ScalarProperty Name="TimePeriod_To" ColumnName="TimePeriod_To" />
+          <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

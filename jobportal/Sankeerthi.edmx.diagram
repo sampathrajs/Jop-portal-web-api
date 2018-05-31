@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5a41b0cd6eeb48a2ad840fe20bf388a3" Name="Diagram1">
+        <EntityTypeShape EntityType="SankeerthiModel.careerdetail" Width="1.5" PointX="7.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="SankeerthiModel.educationdetail" Width="1.5" PointX="10" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SankeerthiModel.jobdetail" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SankeerthiModel.languageproficiency" Width="1.5" PointX="10" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SankeerthiModel.lkpcategory" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SankeerthiModel.lkpcompany" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SankeerthiModel.lkpcountry" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SankeerthiModel.lkpemployement_type" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SankeerthiModel.lkpexperiencetype" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SankeerthiModel.lkpState" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SankeerthiModel.personaldetail" Width="1.5" PointX="10" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SankeerthiModel.usertable" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SankeerthiModel.workhistory" Width="1.5" PointX="10" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="SankeerthiModel.FK_EducationDetailsMemberID" ManuallyRouted="false" />
+        <AssociationConnector Association="SankeerthiModel.FK_LanguageProficiencyMemberID" ManuallyRouted="false" />
+        <AssociationConnector Association="SankeerthiModel.FK_PersonalDetailsMemberID" ManuallyRouted="false" />
+        <AssociationConnector Association="SankeerthiModel.FK_WorkhistoryMemberID" ManuallyRouted="false" />
+        <AssociationConnector Association="SankeerthiModel.FK_Jobdetailscompanyrefernce" ManuallyRouted="false" />
+        <AssociationConnector Association="SankeerthiModel.FK_Jobdetailsdesginationrefernce" ManuallyRouted="false" />
+        <AssociationConnector Association="SankeerthiModel.FK_Jobdetailsemployementrefernce" ManuallyRouted="false" />
+        <AssociationConnector Association="SankeerthiModel.FK_Jobdetailsexperiencerefernce" ManuallyRouted="false" />
+        <AssociationConnector Association="SankeerthiModel.FK_Jobdetailssountryrefernce" ManuallyRouted="false" />
+        <AssociationConnector Association="SankeerthiModel.FK_Jobdetailsstaterefernce" ManuallyRouted="false" />
+        <AssociationConnector Association="SankeerthiModel.FK_CountrystateID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

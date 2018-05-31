@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="jobportalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="jobportalEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="educationdetails" EntityType="jobportalModel.educationdetail" />
+    <EntitySet Name="jobdetails" EntityType="jobportalModel.jobdetail" />
+    <EntitySet Name="languageproficiencies" EntityType="jobportalModel.languageproficiency" />
+    <EntitySet Name="lkpcategories" EntityType="jobportalModel.lkpcategory" />
+    <EntitySet Name="lkpcompanies" EntityType="jobportalModel.lkpcompany" />
+    <EntitySet Name="lkpcountries" EntityType="jobportalModel.lkpcountry" />
+    <EntitySet Name="lkpemployement_type" EntityType="jobportalModel.lkpemployement_type" />
+    <EntitySet Name="lkpexperiencetypes" EntityType="jobportalModel.lkpexperiencetype" />
+    <EntitySet Name="lkpStates" EntityType="jobportalModel.lkpState" />
+    <EntitySet Name="personaldetails" EntityType="jobportalModel.personaldetail" />
+    <EntitySet Name="usertables" EntityType="jobportalModel.usertable" />
+    <EntitySet Name="workhistories" EntityType="jobportalModel.workhistory" />
+    <AssociationSet Name="FK_Jobdetailscompanyrefernce" Association="jobportalModel.FK_Jobdetailscompanyrefernce">
+      <End Role="lkpcompany" EntitySet="lkpcompanies" />
+      <End Role="jobdetail" EntitySet="jobdetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jobdetailsdesginationrefernce" Association="jobportalModel.FK_Jobdetailsdesginationrefernce">
+      <End Role="lkpcategory" EntitySet="lkpcategories" />
+      <End Role="jobdetail" EntitySet="jobdetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jobdetailsemployementrefernce" Association="jobportalModel.FK_Jobdetailsemployementrefernce">
+      <End Role="lkpemployement_type" EntitySet="lkpemployement_type" />
+      <End Role="jobdetail" EntitySet="jobdetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jobdetailsexperiencerefernce" Association="jobportalModel.FK_Jobdetailsexperiencerefernce">
+      <End Role="lkpexperiencetype" EntitySet="lkpexperiencetypes" />
+      <End Role="jobdetail" EntitySet="jobdetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jobdetailssountryrefernce" Association="jobportalModel.FK_Jobdetailssountryrefernce">
+      <End Role="lkpcountry" EntitySet="lkpcountries" />
+      <End Role="jobdetail" EntitySet="jobdetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jobdetailsstaterefernce" Association="jobportalModel.FK_Jobdetailsstaterefernce">
+      <End Role="lkpState" EntitySet="lkpStates" />
+      <End Role="jobdetail" EntitySet="jobdetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CountrystateID" Association="jobportalModel.FK_CountrystateID">
+      <End Role="lkpcountry" EntitySet="lkpcountries" />
+      <End Role="lkpState" EntitySet="lkpStates" />
+    </AssociationSet>
+    <EntitySet Name="careerdetails" EntityType="jobportalModel.careerdetail" />
+    <AssociationSet Name="FK_EducationDetailsMemberID" Association="jobportalModel.FK_EducationDetailsMemberID">
+      <End Role="careerdetail" EntitySet="careerdetails" />
+      <End Role="educationdetail" EntitySet="educationdetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LanguageProficiencyMemberID" Association="jobportalModel.FK_LanguageProficiencyMemberID">
+      <End Role="careerdetail" EntitySet="careerdetails" />
+      <End Role="languageproficiency" EntitySet="languageproficiencies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonalDetailsMemberID" Association="jobportalModel.FK_PersonalDetailsMemberID">
+      <End Role="careerdetail" EntitySet="careerdetails" />
+      <End Role="personaldetail" EntitySet="personaldetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkhistoryMemberID" Association="jobportalModel.FK_WorkhistoryMemberID">
+      <End Role="careerdetail" EntitySet="careerdetails" />
+      <End Role="workhistory" EntitySet="workhistories" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="educationdetail">
+    <Key>
+      <PropertyRef Name="PK_EducationDetailsID" />
+    </Key>
+    <Property Name="PK_EducationDetailsID" Type="Guid" Nullable="false" />
+    <Property Name="FK_MemberID" Type="Guid" />
+    <Property Name="InstituteName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Degree" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TimePeriod_From" Type="DateTime" Precision="0" />
+    <Property Name="TimePeriod_To" Type="DateTime" Precision="0" />
+    <Property Name="Ed_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="careerdetail" Relationship="jobportalModel.FK_EducationDetailsMemberID" FromRole="educationdetail" ToRole="careerdetail" />
+  </EntityType>
+  <EntityType Name="jobdetail">
+    <Key>
+      <PropertyRef Name="PK_JobID" />
+    </Key>
+    <Property Name="PK_JobID" Type="Guid" Nullable="false" />
+    <Property Name="FK_CategoryID" Type="Guid" />
+    <Property Name="FK_EmployementID" Type="Guid" />
+    <Property Name="FK_CompanyID" Type="Guid" />
+    <Property Name="FK_CountryID" Type="Guid" />
+    <Property Name="FK_StateID" Type="Guid" />
+    <Property Name="FK_ExpericeID" Type="Guid" />
+    <Property Name="jobdesgination" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="minsalary" Type="Int32" />
+    <Property Name="maxsalary" Type="Int32" />
+    <Property Name="jobposteddate" Type="DateTime" Precision="0" />
+    <Property Name="isactive" Type="Boolean" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="lkpcompany" Relationship="jobportalModel.FK_Jobdetailscompanyrefernce" FromRole="jobdetail" ToRole="lkpcompany" />
+    <NavigationProperty Name="lkpcategory" Relationship="jobportalModel.FK_Jobdetailsdesginationrefernce" FromRole="jobdetail" ToRole="lkpcategory" />
+    <NavigationProperty Name="lkpemployement_type" Relationship="jobportalModel.FK_Jobdetailsemployementrefernce" FromRole="jobdetail" ToRole="lkpemployement_type" />
+    <NavigationProperty Name="lkpexperiencetype" Relationship="jobportalModel.FK_Jobdetailsexperiencerefernce" FromRole="jobdetail" ToRole="lkpexperiencetype" />
+    <NavigationProperty Name="lkpcountry" Relationship="jobportalModel.FK_Jobdetailssountryrefernce" FromRole="jobdetail" ToRole="lkpcountry" />
+    <NavigationProperty Name="lkpState" Relationship="jobportalModel.FK_Jobdetailsstaterefernce" FromRole="jobdetail" ToRole="lkpState" />
+  </EntityType>
+  <EntityType Name="languageproficiency">
+    <Key>
+      <PropertyRef Name="PK_LanguageProficiencyID" />
+    </Key>
+    <Property Name="PK_LanguageProficiencyID" Type="Guid" Nullable="false" />
+    <Property Name="FK_MemberID" Type="Guid" />
+    <Property Name="LanguageName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Rating" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="careerdetail" Relationship="jobportalModel.FK_LanguageProficiencyMemberID" FromRole="languageproficiency" ToRole="careerdetail" />
+  </EntityType>
+  <EntityType Name="lkpcategory">
+    <Key>
+      <PropertyRef Name="PK_CategoryID" />
+    </Key>
+    <Property Name="PK_CategoryID" Type="Guid" Nullable="false" />
+    <Property Name="Categoryname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="isactive" Type="Boolean" />
+    <Property Name="createdby" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="createdon" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="jobdetails" Relationship="jobportalModel.FK_Jobdetailsdesginationrefernce" FromRole="lkpcategory" ToRole="jobdetail" />
+  </EntityType>
+  <EntityType Name="lkpcompany">
+    <Key>
+      <PropertyRef Name="PK_CompanyID" />
+    </Key>
+    <Property Name="PK_CompanyID" Type="Guid" Nullable="false" />
+    <Property Name="companyname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="companytype" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="emailid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="phonenumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="isactive" Type="Boolean" />
+    <Property Name="createdby" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="createdon" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="jobdetails" Relationship="jobportalModel.FK_Jobdetailscompanyrefernce" FromRole="lkpcompany" ToRole="jobdetail" />
+  </EntityType>
+  <EntityType Name="lkpcountry">
+    <Key>
+      <PropertyRef Name="PK_CountryID" />
+    </Key>
+    <Property Name="PK_CountryID" Type="Guid" Nullable="false" />
+    <Property Name="countryname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isactive" Type="Boolean" />
+    <Property Name="createdby" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="createdon" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="jobdetails" Relationship="jobportalModel.FK_Jobdetailssountryrefernce" FromRole="lkpcountry" ToRole="jobdetail" />
+    <NavigationProperty Name="lkpStates" Relationship="jobportalModel.FK_CountrystateID" FromRole="lkpcountry" ToRole="lkpState" />
+  </EntityType>
+  <EntityType Name="lkpemployement_type">
+    <Key>
+      <PropertyRef Name="PK_EmployementID" />
+    </Key>
+    <Property Name="PK_EmployementID" Type="Guid" Nullable="false" />
+    <Property Name="employementtype" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="isactive" Type="Boolean" />
+    <Property Name="createdby" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="createdon" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="jobdetails" Relationship="jobportalModel.FK_Jobdetailsemployementrefernce" FromRole="lkpemployement_type" ToRole="jobdetail" />
+  </EntityType>
+  <EntityType Name="lkpexperiencetype">
+    <Key>
+      <PropertyRef Name="PK_ExpericeID" />
+    </Key>
+    <Property Name="PK_ExpericeID" Type="Guid" Nullable="false" />
+    <Property Name="experiencetype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isactive" Type="Boolean" />
+    <Property Name="createdby" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="createdon" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="jobdetails" Relationship="jobportalModel.FK_Jobdetailsexperiencerefernce" FromRole="lkpexperiencetype" ToRole="jobdetail" />
+  </EntityType>
+  <EntityType Name="lkpState">
+    <Key>
+      <PropertyRef Name="PK_StateID" />
+    </Key>
+    <Property Name="PK_StateID" Type="Guid" Nullable="false" />
+    <Property Name="FK_CountryID" Type="Guid" />
+    <Property Name="statename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isactive" Type="Boolean" />
+    <Property Name="createdby" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="createdon" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="jobdetails" Relationship="jobportalModel.FK_Jobdetailsstaterefernce" FromRole="lkpState" ToRole="jobdetail" />
+    <NavigationProperty Name="lkpcountry" Relationship="jobportalModel.FK_CountrystateID" FromRole="lkpState" ToRole="lkpcountry" />
+  </EntityType>
+  <EntityType Name="personaldetail">
+    <Key>
+      <PropertyRef Name="PK_MemberUserID" />
+    </Key>
+    <Property Name="PK_MemberUserID" Type="Guid" Nullable="false" />
+    <Property Name="FK_MemberID" Type="Guid" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FatherName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MotherName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="BirthPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nationality" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="careerdetail" Relationship="jobportalModel.FK_PersonalDetailsMemberID" FromRole="personaldetail" ToRole="careerdetail" />
+  </EntityType>
+  <EntityType Name="usertable">
+    <Key>
+      <PropertyRef Name="PK_UserID" />
+    </Key>
+    <Property Name="PK_UserID" Type="Guid" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="emailid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="phonenumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="isactive" Type="Boolean" />
+    <Property Name="lastlogin" Type="DateTime" Precision="0" />
+    <Property Name="createdon" Type="DateTime" Precision="0" />
+    <Property Name="isadmin" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="workhistory">
+    <Key>
+      <PropertyRef Name="PK_WorkHistoryID" />
+    </Key>
+    <Property Name="PK_WorkHistoryID" Type="Guid" Nullable="false" />
+    <Property Name="FK_MemberID" Type="Guid" />
+    <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Desgination" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TimePeriod_From" Type="DateTime" Precision="0" />
+    <Property Name="TimePeriod_To" Type="DateTime" Precision="0" />
+    <Property Name="JobDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="careerdetail" Relationship="jobportalModel.FK_WorkhistoryMemberID" FromRole="workhistory" ToRole="careerdetail" />
+  </EntityType>
+  <Association Name="FK_Jobdetailscompanyrefernce">
+    <End Type="jobportalModel.lkpcompany" Role="lkpcompany" Multiplicity="0..1" />
+    <End Type="jobportalModel.jobdetail" Role="jobdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lkpcompany">
+        <PropertyRef Name="PK_CompanyID" />
+      </Principal>
+      <Dependent Role="jobdetail">
+        <PropertyRef Name="FK_CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jobdetailsdesginationrefernce">
+    <End Type="jobportalModel.lkpcategory" Role="lkpcategory" Multiplicity="0..1" />
+    <End Type="jobportalModel.jobdetail" Role="jobdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lkpcategory">
+        <PropertyRef Name="PK_CategoryID" />
+      </Principal>
+      <Dependent Role="jobdetail">
+        <PropertyRef Name="FK_CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jobdetailsemployementrefernce">
+    <End Type="jobportalModel.lkpemployement_type" Role="lkpemployement_type" Multiplicity="0..1" />
+    <End Type="jobportalModel.jobdetail" Role="jobdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lkpemployement_type">
+        <PropertyRef Name="PK_EmployementID" />
+      </Principal>
+      <Dependent Role="jobdetail">
+        <PropertyRef Name="FK_EmployementID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jobdetailsexperiencerefernce">
+    <End Type="jobportalModel.lkpexperiencetype" Role="lkpexperiencetype" Multiplicity="0..1" />
+    <End Type="jobportalModel.jobdetail" Role="jobdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lkpexperiencetype">
+        <PropertyRef Name="PK_ExpericeID" />
+      </Principal>
+      <Dependent Role="jobdetail">
+        <PropertyRef Name="FK_ExpericeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jobdetailssountryrefernce">
+    <End Type="jobportalModel.lkpcountry" Role="lkpcountry" Multiplicity="0..1" />
+    <End Type="jobportalModel.jobdetail" Role="jobdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lkpcountry">
+        <PropertyRef Name="PK_CountryID" />
+      </Principal>
+      <Dependent Role="jobdetail">
+        <PropertyRef Name="FK_CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jobdetailsstaterefernce">
+    <End Type="jobportalModel.lkpState" Role="lkpState" Multiplicity="0..1" />
+    <End Type="jobportalModel.jobdetail" Role="jobdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lkpState">
+        <PropertyRef Name="PK_StateID" />
+      </Principal>
+      <Dependent Role="jobdetail">
+        <PropertyRef Name="FK_StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CountrystateID">
+    <End Type="jobportalModel.lkpcountry" Role="lkpcountry" Multiplicity="0..1" />
+    <End Type="jobportalModel.lkpState" Role="lkpState" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lkpcountry">
+        <PropertyRef Name="PK_CountryID" />
+      </Principal>
+      <Dependent Role="lkpState">
+        <PropertyRef Name="FK_CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="careerdetail">
+    <Key>
+      <PropertyRef Name="PK_MemberID" />
+    </Key>
+    <Property Name="PK_MemberID" Type="Guid" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AdditionalInformation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CareerObjective" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SpecialQualification" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Declaration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Resume" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="createdby" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="createdon" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="educationdetails" Relationship="jobportalModel.FK_EducationDetailsMemberID" FromRole="careerdetail" ToRole="educationdetail" />
+    <NavigationProperty Name="languageproficiencies" Relationship="jobportalModel.FK_LanguageProficiencyMemberID" FromRole="careerdetail" ToRole="languageproficiency" />
+    <NavigationProperty Name="personaldetails" Relationship="jobportalModel.FK_PersonalDetailsMemberID" FromRole="careerdetail" ToRole="personaldetail" />
+    <NavigationProperty Name="workhistories" Relationship="jobportalModel.FK_WorkhistoryMemberID" FromRole="careerdetail" ToRole="workhistory" />
+  </EntityType>
+  <Association Name="FK_EducationDetailsMemberID">
+    <End Type="jobportalModel.careerdetail" Role="careerdetail" Multiplicity="0..1" />
+    <End Type="jobportalModel.educationdetail" Role="educationdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="careerdetail">
+        <PropertyRef Name="PK_MemberID" />
+      </Principal>
+      <Dependent Role="educationdetail">
+        <PropertyRef Name="FK_MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LanguageProficiencyMemberID">
+    <End Type="jobportalModel.careerdetail" Role="careerdetail" Multiplicity="0..1" />
+    <End Type="jobportalModel.languageproficiency" Role="languageproficiency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="careerdetail">
+        <PropertyRef Name="PK_MemberID" />
+      </Principal>
+      <Dependent Role="languageproficiency">
+        <PropertyRef Name="FK_MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonalDetailsMemberID">
+    <End Type="jobportalModel.careerdetail" Role="careerdetail" Multiplicity="0..1" />
+    <End Type="jobportalModel.personaldetail" Role="personaldetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="careerdetail">
+        <PropertyRef Name="PK_MemberID" />
+      </Principal>
+      <Dependent Role="personaldetail">
+        <PropertyRef Name="FK_MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkhistoryMemberID">
+    <End Type="jobportalModel.careerdetail" Role="careerdetail" Multiplicity="0..1" />
+    <End Type="jobportalModel.workhistory" Role="workhistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="careerdetail">
+        <PropertyRef Name="PK_MemberID" />
+      </Principal>
+      <Dependent Role="workhistory">
+        <PropertyRef Name="FK_MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

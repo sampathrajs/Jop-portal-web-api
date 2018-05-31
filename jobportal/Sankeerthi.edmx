@@ -1,0 +1,945 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SankeerthiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="careerdetails">
+          <Key>
+            <PropertyRef Name="PK_MemberID" />
+          </Key>
+          <Property Name="PK_MemberID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="100" />
+          <Property Name="AdditionalInformation" Type="varchar" MaxLength="200" />
+          <Property Name="CareerObjective" Type="varchar(max)" />
+          <Property Name="SpecialQualification" Type="varchar(max)" />
+          <Property Name="Declaration" Type="varchar(max)" />
+          <Property Name="Resume" Type="varchar(max)" />
+          <Property Name="createdby" Type="varchar" MaxLength="10" />
+          <Property Name="createdon" Type="date" />
+          <Property Name="EmailAlert" Type="bit" />
+        </EntityType>
+        <EntityType Name="educationdetails">
+          <Key>
+            <PropertyRef Name="PK_EducationDetailsID" />
+          </Key>
+          <Property Name="PK_EducationDetailsID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FK_MemberID" Type="uniqueidentifier" />
+          <Property Name="InstituteName" Type="varchar" MaxLength="300" />
+          <Property Name="Degree" Type="varchar" MaxLength="100" />
+          <Property Name="TimePeriod_From" Type="date" />
+          <Property Name="TimePeriod_To" Type="date" />
+          <Property Name="Ed_Description" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="jobdetails">
+          <Key>
+            <PropertyRef Name="PK_JobID" />
+          </Key>
+          <Property Name="PK_JobID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FK_CategoryID" Type="uniqueidentifier" />
+          <Property Name="FK_EmployementID" Type="uniqueidentifier" />
+          <Property Name="FK_CompanyID" Type="uniqueidentifier" />
+          <Property Name="FK_CountryID" Type="uniqueidentifier" />
+          <Property Name="FK_StateID" Type="uniqueidentifier" />
+          <Property Name="FK_ExpericeID" Type="uniqueidentifier" />
+          <Property Name="jobdesgination" Type="varchar" MaxLength="50" />
+          <Property Name="minsalary" Type="int" />
+          <Property Name="maxsalary" Type="int" />
+          <Property Name="jobposteddate" Type="date" />
+          <Property Name="isactive" Type="bit" />
+          <Property Name="image" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="languageproficiency">
+          <Key>
+            <PropertyRef Name="PK_LanguageProficiencyID" />
+          </Key>
+          <Property Name="PK_LanguageProficiencyID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FK_MemberID" Type="uniqueidentifier" />
+          <Property Name="LanguageName" Type="varchar" MaxLength="100" />
+          <Property Name="Rating" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="lkpcategory">
+          <Key>
+            <PropertyRef Name="PK_CategoryID" />
+          </Key>
+          <Property Name="PK_CategoryID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Categoryname" Type="varchar" MaxLength="100" />
+          <Property Name="isactive" Type="bit" />
+          <Property Name="createdby" Type="varchar" MaxLength="30" />
+          <Property Name="createdon" Type="date" />
+        </EntityType>
+        <EntityType Name="lkpcompany">
+          <Key>
+            <PropertyRef Name="PK_CompanyID" />
+          </Key>
+          <Property Name="PK_CompanyID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="companyname" Type="varchar" MaxLength="100" />
+          <Property Name="companytype" Type="varchar" MaxLength="100" />
+          <Property Name="emailid" Type="varchar" MaxLength="50" />
+          <Property Name="phonenumber" Type="varchar" MaxLength="20" />
+          <Property Name="address" Type="varchar(max)" />
+          <Property Name="isactive" Type="bit" />
+          <Property Name="createdby" Type="varchar" MaxLength="30" />
+          <Property Name="createdon" Type="date" />
+        </EntityType>
+        <EntityType Name="lkpcountry">
+          <Key>
+            <PropertyRef Name="PK_CountryID" />
+          </Key>
+          <Property Name="PK_CountryID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="countryname" Type="varchar" MaxLength="50" />
+          <Property Name="isactive" Type="bit" />
+          <Property Name="createdby" Type="varchar" MaxLength="30" />
+          <Property Name="createdon" Type="date" />
+        </EntityType>
+        <EntityType Name="lkpemployement_type">
+          <Key>
+            <PropertyRef Name="PK_EmployementID" />
+          </Key>
+          <Property Name="PK_EmployementID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="employementtype" Type="varchar" MaxLength="100" />
+          <Property Name="isactive" Type="bit" />
+          <Property Name="createdby" Type="varchar" MaxLength="30" />
+          <Property Name="createdon" Type="date" />
+        </EntityType>
+        <EntityType Name="lkpexperiencetype">
+          <Key>
+            <PropertyRef Name="PK_ExpericeID" />
+          </Key>
+          <Property Name="PK_ExpericeID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="experiencetype" Type="varchar" MaxLength="50" />
+          <Property Name="isactive" Type="bit" />
+          <Property Name="createdby" Type="varchar" MaxLength="30" />
+          <Property Name="createdon" Type="date" />
+        </EntityType>
+        <EntityType Name="lkpState">
+          <Key>
+            <PropertyRef Name="PK_StateID" />
+          </Key>
+          <Property Name="PK_StateID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FK_CountryID" Type="uniqueidentifier" />
+          <Property Name="statename" Type="varchar" MaxLength="50" />
+          <Property Name="isactive" Type="bit" />
+          <Property Name="createdby" Type="varchar" MaxLength="30" />
+          <Property Name="createdon" Type="date" />
+        </EntityType>
+        <EntityType Name="personaldetail">
+          <Key>
+            <PropertyRef Name="PK_MemberUserID" />
+          </Key>
+          <Property Name="PK_MemberUserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FK_MemberID" Type="uniqueidentifier" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" />
+          <Property Name="FatherName" Type="varchar" MaxLength="100" />
+          <Property Name="MotherName" Type="varchar" MaxLength="100" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="BirthPlace" Type="varchar" MaxLength="50" />
+          <Property Name="Nationality" Type="varchar" MaxLength="40" />
+          <Property Name="Sex" Type="varchar" MaxLength="10" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="usertable">
+          <Key>
+            <PropertyRef Name="PK_UserID" />
+          </Key>
+          <Property Name="PK_UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="15" />
+          <Property Name="password" Type="varchar" MaxLength="15" />
+          <Property Name="emailid" Type="varchar" MaxLength="50" />
+          <Property Name="phonenumber" Type="varchar" MaxLength="20" />
+          <Property Name="isactive" Type="bit" />
+          <Property Name="lastlogin" Type="date" />
+          <Property Name="createdon" Type="date" />
+          <Property Name="isadmin" Type="bit" />
+        </EntityType>
+        <EntityType Name="workhistory">
+          <Key>
+            <PropertyRef Name="PK_WorkHistoryID" />
+          </Key>
+          <Property Name="PK_WorkHistoryID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FK_MemberID" Type="uniqueidentifier" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="100" />
+          <Property Name="Desgination" Type="varchar" MaxLength="50" />
+          <Property Name="TimePeriod_From" Type="date" />
+          <Property Name="TimePeriod_To" Type="date" />
+          <Property Name="JobDescription" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK_CountrystateID">
+          <End Role="lkpcountry" Type="Self.lkpcountry" Multiplicity="0..1" />
+          <End Role="lkpState" Type="Self.lkpState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkpcountry">
+              <PropertyRef Name="PK_CountryID" />
+            </Principal>
+            <Dependent Role="lkpState">
+              <PropertyRef Name="FK_CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EducationDetailsMemberID">
+          <End Role="careerdetails" Type="Self.careerdetails" Multiplicity="0..1" />
+          <End Role="educationdetails" Type="Self.educationdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="careerdetails">
+              <PropertyRef Name="PK_MemberID" />
+            </Principal>
+            <Dependent Role="educationdetails">
+              <PropertyRef Name="FK_MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobdetailscompanyrefernce">
+          <End Role="lkpcompany" Type="Self.lkpcompany" Multiplicity="0..1" />
+          <End Role="jobdetails" Type="Self.jobdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkpcompany">
+              <PropertyRef Name="PK_CompanyID" />
+            </Principal>
+            <Dependent Role="jobdetails">
+              <PropertyRef Name="FK_CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobdetailsdesginationrefernce">
+          <End Role="lkpcategory" Type="Self.lkpcategory" Multiplicity="0..1" />
+          <End Role="jobdetails" Type="Self.jobdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkpcategory">
+              <PropertyRef Name="PK_CategoryID" />
+            </Principal>
+            <Dependent Role="jobdetails">
+              <PropertyRef Name="FK_CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobdetailsemployementrefernce">
+          <End Role="lkpemployement_type" Type="Self.lkpemployement_type" Multiplicity="0..1" />
+          <End Role="jobdetails" Type="Self.jobdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkpemployement_type">
+              <PropertyRef Name="PK_EmployementID" />
+            </Principal>
+            <Dependent Role="jobdetails">
+              <PropertyRef Name="FK_EmployementID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobdetailsexperiencerefernce">
+          <End Role="lkpexperiencetype" Type="Self.lkpexperiencetype" Multiplicity="0..1" />
+          <End Role="jobdetails" Type="Self.jobdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkpexperiencetype">
+              <PropertyRef Name="PK_ExpericeID" />
+            </Principal>
+            <Dependent Role="jobdetails">
+              <PropertyRef Name="FK_ExpericeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobdetailssountryrefernce">
+          <End Role="lkpcountry" Type="Self.lkpcountry" Multiplicity="0..1" />
+          <End Role="jobdetails" Type="Self.jobdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkpcountry">
+              <PropertyRef Name="PK_CountryID" />
+            </Principal>
+            <Dependent Role="jobdetails">
+              <PropertyRef Name="FK_CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobdetailsstaterefernce">
+          <End Role="lkpState" Type="Self.lkpState" Multiplicity="0..1" />
+          <End Role="jobdetails" Type="Self.jobdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkpState">
+              <PropertyRef Name="PK_StateID" />
+            </Principal>
+            <Dependent Role="jobdetails">
+              <PropertyRef Name="FK_StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LanguageProficiencyMemberID">
+          <End Role="careerdetails" Type="Self.careerdetails" Multiplicity="0..1" />
+          <End Role="languageproficiency" Type="Self.languageproficiency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="careerdetails">
+              <PropertyRef Name="PK_MemberID" />
+            </Principal>
+            <Dependent Role="languageproficiency">
+              <PropertyRef Name="FK_MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalDetailsMemberID">
+          <End Role="careerdetails" Type="Self.careerdetails" Multiplicity="0..1" />
+          <End Role="personaldetail" Type="Self.personaldetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="careerdetails">
+              <PropertyRef Name="PK_MemberID" />
+            </Principal>
+            <Dependent Role="personaldetail">
+              <PropertyRef Name="FK_MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkhistoryMemberID">
+          <End Role="careerdetails" Type="Self.careerdetails" Multiplicity="0..1" />
+          <End Role="workhistory" Type="Self.workhistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="careerdetails">
+              <PropertyRef Name="PK_MemberID" />
+            </Principal>
+            <Dependent Role="workhistory">
+              <PropertyRef Name="FK_MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SankeerthiModelStoreContainer">
+          <EntitySet Name="careerdetails" EntityType="Self.careerdetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="educationdetails" EntityType="Self.educationdetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jobdetails" EntityType="Self.jobdetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="languageproficiency" EntityType="Self.languageproficiency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lkpcategory" EntityType="Self.lkpcategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lkpcompany" EntityType="Self.lkpcompany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lkpcountry" EntityType="Self.lkpcountry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lkpemployement_type" EntityType="Self.lkpemployement_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lkpexperiencetype" EntityType="Self.lkpexperiencetype" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lkpState" EntityType="Self.lkpState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personaldetail" EntityType="Self.personaldetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usertable" EntityType="Self.usertable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="workhistory" EntityType="Self.workhistory" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CountrystateID" Association="Self.FK_CountrystateID">
+            <End Role="lkpcountry" EntitySet="lkpcountry" />
+            <End Role="lkpState" EntitySet="lkpState" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EducationDetailsMemberID" Association="Self.FK_EducationDetailsMemberID">
+            <End Role="careerdetails" EntitySet="careerdetails" />
+            <End Role="educationdetails" EntitySet="educationdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobdetailscompanyrefernce" Association="Self.FK_Jobdetailscompanyrefernce">
+            <End Role="lkpcompany" EntitySet="lkpcompany" />
+            <End Role="jobdetails" EntitySet="jobdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobdetailsdesginationrefernce" Association="Self.FK_Jobdetailsdesginationrefernce">
+            <End Role="lkpcategory" EntitySet="lkpcategory" />
+            <End Role="jobdetails" EntitySet="jobdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobdetailsemployementrefernce" Association="Self.FK_Jobdetailsemployementrefernce">
+            <End Role="lkpemployement_type" EntitySet="lkpemployement_type" />
+            <End Role="jobdetails" EntitySet="jobdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobdetailsexperiencerefernce" Association="Self.FK_Jobdetailsexperiencerefernce">
+            <End Role="lkpexperiencetype" EntitySet="lkpexperiencetype" />
+            <End Role="jobdetails" EntitySet="jobdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobdetailssountryrefernce" Association="Self.FK_Jobdetailssountryrefernce">
+            <End Role="lkpcountry" EntitySet="lkpcountry" />
+            <End Role="jobdetails" EntitySet="jobdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobdetailsstaterefernce" Association="Self.FK_Jobdetailsstaterefernce">
+            <End Role="lkpState" EntitySet="lkpState" />
+            <End Role="jobdetails" EntitySet="jobdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LanguageProficiencyMemberID" Association="Self.FK_LanguageProficiencyMemberID">
+            <End Role="careerdetails" EntitySet="careerdetails" />
+            <End Role="languageproficiency" EntitySet="languageproficiency" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalDetailsMemberID" Association="Self.FK_PersonalDetailsMemberID">
+            <End Role="careerdetails" EntitySet="careerdetails" />
+            <End Role="personaldetail" EntitySet="personaldetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkhistoryMemberID" Association="Self.FK_WorkhistoryMemberID">
+            <End Role="careerdetails" EntitySet="careerdetails" />
+            <End Role="workhistory" EntitySet="workhistory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SankeerthiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="careerdetail">
+          <Key>
+            <PropertyRef Name="PK_MemberID" />
+          </Key>
+          <Property Name="PK_MemberID" Type="Guid" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AdditionalInformation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CareerObjective" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SpecialQualification" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Declaration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Resume" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="createdby" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="createdon" Type="DateTime" Precision="0" />
+          <Property Name="EmailAlert" Type="Boolean" />
+          <NavigationProperty Name="educationdetails" Relationship="Self.FK_EducationDetailsMemberID" FromRole="careerdetails" ToRole="educationdetails" />
+          <NavigationProperty Name="languageproficiencies" Relationship="Self.FK_LanguageProficiencyMemberID" FromRole="careerdetails" ToRole="languageproficiency" />
+          <NavigationProperty Name="personaldetails" Relationship="Self.FK_PersonalDetailsMemberID" FromRole="careerdetails" ToRole="personaldetail" />
+          <NavigationProperty Name="workhistories" Relationship="Self.FK_WorkhistoryMemberID" FromRole="careerdetails" ToRole="workhistory" />
+        </EntityType>
+        <EntityType Name="educationdetail">
+          <Key>
+            <PropertyRef Name="PK_EducationDetailsID" />
+          </Key>
+          <Property Name="PK_EducationDetailsID" Type="Guid" Nullable="false" />
+          <Property Name="FK_MemberID" Type="Guid" />
+          <Property Name="InstituteName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Degree" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TimePeriod_From" Type="DateTime" Precision="0" />
+          <Property Name="TimePeriod_To" Type="DateTime" Precision="0" />
+          <Property Name="Ed_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="careerdetail" Relationship="Self.FK_EducationDetailsMemberID" FromRole="educationdetails" ToRole="careerdetails" />
+        </EntityType>
+        <EntityType Name="jobdetail">
+          <Key>
+            <PropertyRef Name="PK_JobID" />
+          </Key>
+          <Property Name="PK_JobID" Type="Guid" Nullable="false" />
+          <Property Name="FK_CategoryID" Type="Guid" />
+          <Property Name="FK_EmployementID" Type="Guid" />
+          <Property Name="FK_CompanyID" Type="Guid" />
+          <Property Name="FK_CountryID" Type="Guid" />
+          <Property Name="FK_StateID" Type="Guid" />
+          <Property Name="FK_ExpericeID" Type="Guid" />
+          <Property Name="jobdesgination" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="minsalary" Type="Int32" />
+          <Property Name="maxsalary" Type="Int32" />
+          <Property Name="jobposteddate" Type="DateTime" Precision="0" />
+          <Property Name="isactive" Type="Boolean" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="lkpcompany" Relationship="Self.FK_Jobdetailscompanyrefernce" FromRole="jobdetails" ToRole="lkpcompany" />
+          <NavigationProperty Name="lkpcategory" Relationship="Self.FK_Jobdetailsdesginationrefernce" FromRole="jobdetails" ToRole="lkpcategory" />
+          <NavigationProperty Name="lkpemployement_type" Relationship="Self.FK_Jobdetailsemployementrefernce" FromRole="jobdetails" ToRole="lkpemployement_type" />
+          <NavigationProperty Name="lkpexperiencetype" Relationship="Self.FK_Jobdetailsexperiencerefernce" FromRole="jobdetails" ToRole="lkpexperiencetype" />
+          <NavigationProperty Name="lkpcountry" Relationship="Self.FK_Jobdetailssountryrefernce" FromRole="jobdetails" ToRole="lkpcountry" />
+          <NavigationProperty Name="lkpState" Relationship="Self.FK_Jobdetailsstaterefernce" FromRole="jobdetails" ToRole="lkpState" />
+        </EntityType>
+        <EntityType Name="languageproficiency">
+          <Key>
+            <PropertyRef Name="PK_LanguageProficiencyID" />
+          </Key>
+          <Property Name="PK_LanguageProficiencyID" Type="Guid" Nullable="false" />
+          <Property Name="FK_MemberID" Type="Guid" />
+          <Property Name="LanguageName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Rating" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="careerdetail" Relationship="Self.FK_LanguageProficiencyMemberID" FromRole="languageproficiency" ToRole="careerdetails" />
+        </EntityType>
+        <EntityType Name="lkpcategory">
+          <Key>
+            <PropertyRef Name="PK_CategoryID" />
+          </Key>
+          <Property Name="PK_CategoryID" Type="Guid" Nullable="false" />
+          <Property Name="Categoryname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="isactive" Type="Boolean" />
+          <Property Name="createdby" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="createdon" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="jobdetails" Relationship="Self.FK_Jobdetailsdesginationrefernce" FromRole="lkpcategory" ToRole="jobdetails" />
+        </EntityType>
+        <EntityType Name="lkpcompany">
+          <Key>
+            <PropertyRef Name="PK_CompanyID" />
+          </Key>
+          <Property Name="PK_CompanyID" Type="Guid" Nullable="false" />
+          <Property Name="companyname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="companytype" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="emailid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phonenumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isactive" Type="Boolean" />
+          <Property Name="createdby" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="createdon" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="jobdetails" Relationship="Self.FK_Jobdetailscompanyrefernce" FromRole="lkpcompany" ToRole="jobdetails" />
+        </EntityType>
+        <EntityType Name="lkpcountry">
+          <Key>
+            <PropertyRef Name="PK_CountryID" />
+          </Key>
+          <Property Name="PK_CountryID" Type="Guid" Nullable="false" />
+          <Property Name="countryname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isactive" Type="Boolean" />
+          <Property Name="createdby" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="createdon" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="jobdetails" Relationship="Self.FK_Jobdetailssountryrefernce" FromRole="lkpcountry" ToRole="jobdetails" />
+          <NavigationProperty Name="lkpStates" Relationship="Self.FK_CountrystateID" FromRole="lkpcountry" ToRole="lkpState" />
+        </EntityType>
+        <EntityType Name="lkpemployement_type">
+          <Key>
+            <PropertyRef Name="PK_EmployementID" />
+          </Key>
+          <Property Name="PK_EmployementID" Type="Guid" Nullable="false" />
+          <Property Name="employementtype" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="isactive" Type="Boolean" />
+          <Property Name="createdby" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="createdon" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="jobdetails" Relationship="Self.FK_Jobdetailsemployementrefernce" FromRole="lkpemployement_type" ToRole="jobdetails" />
+        </EntityType>
+        <EntityType Name="lkpexperiencetype">
+          <Key>
+            <PropertyRef Name="PK_ExpericeID" />
+          </Key>
+          <Property Name="PK_ExpericeID" Type="Guid" Nullable="false" />
+          <Property Name="experiencetype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isactive" Type="Boolean" />
+          <Property Name="createdby" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="createdon" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="jobdetails" Relationship="Self.FK_Jobdetailsexperiencerefernce" FromRole="lkpexperiencetype" ToRole="jobdetails" />
+        </EntityType>
+        <EntityType Name="lkpState">
+          <Key>
+            <PropertyRef Name="PK_StateID" />
+          </Key>
+          <Property Name="PK_StateID" Type="Guid" Nullable="false" />
+          <Property Name="FK_CountryID" Type="Guid" />
+          <Property Name="statename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isactive" Type="Boolean" />
+          <Property Name="createdby" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="createdon" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="jobdetails" Relationship="Self.FK_Jobdetailsstaterefernce" FromRole="lkpState" ToRole="jobdetails" />
+          <NavigationProperty Name="lkpcountry" Relationship="Self.FK_CountrystateID" FromRole="lkpState" ToRole="lkpcountry" />
+        </EntityType>
+        <EntityType Name="personaldetail">
+          <Key>
+            <PropertyRef Name="PK_MemberUserID" />
+          </Key>
+          <Property Name="PK_MemberUserID" Type="Guid" Nullable="false" />
+          <Property Name="FK_MemberID" Type="Guid" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FatherName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MotherName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="BirthPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nationality" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="careerdetail" Relationship="Self.FK_PersonalDetailsMemberID" FromRole="personaldetail" ToRole="careerdetails" />
+        </EntityType>
+        <EntityType Name="usertable">
+          <Key>
+            <PropertyRef Name="PK_UserID" />
+          </Key>
+          <Property Name="PK_UserID" Type="Guid" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="emailid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phonenumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="isactive" Type="Boolean" />
+          <Property Name="lastlogin" Type="DateTime" Precision="0" />
+          <Property Name="createdon" Type="DateTime" Precision="0" />
+          <Property Name="isadmin" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="workhistory">
+          <Key>
+            <PropertyRef Name="PK_WorkHistoryID" />
+          </Key>
+          <Property Name="PK_WorkHistoryID" Type="Guid" Nullable="false" />
+          <Property Name="FK_MemberID" Type="Guid" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Desgination" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TimePeriod_From" Type="DateTime" Precision="0" />
+          <Property Name="TimePeriod_To" Type="DateTime" Precision="0" />
+          <Property Name="JobDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="careerdetail" Relationship="Self.FK_WorkhistoryMemberID" FromRole="workhistory" ToRole="careerdetails" />
+        </EntityType>
+        <Association Name="FK_EducationDetailsMemberID">
+          <End Role="careerdetails" Type="Self.careerdetail" Multiplicity="0..1" />
+          <End Role="educationdetails" Type="Self.educationdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="careerdetails">
+              <PropertyRef Name="PK_MemberID" />
+            </Principal>
+            <Dependent Role="educationdetails">
+              <PropertyRef Name="FK_MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LanguageProficiencyMemberID">
+          <End Role="careerdetails" Type="Self.careerdetail" Multiplicity="0..1" />
+          <End Role="languageproficiency" Type="Self.languageproficiency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="careerdetails">
+              <PropertyRef Name="PK_MemberID" />
+            </Principal>
+            <Dependent Role="languageproficiency">
+              <PropertyRef Name="FK_MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalDetailsMemberID">
+          <End Role="careerdetails" Type="Self.careerdetail" Multiplicity="0..1" />
+          <End Role="personaldetail" Type="Self.personaldetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="careerdetails">
+              <PropertyRef Name="PK_MemberID" />
+            </Principal>
+            <Dependent Role="personaldetail">
+              <PropertyRef Name="FK_MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkhistoryMemberID">
+          <End Role="careerdetails" Type="Self.careerdetail" Multiplicity="0..1" />
+          <End Role="workhistory" Type="Self.workhistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="careerdetails">
+              <PropertyRef Name="PK_MemberID" />
+            </Principal>
+            <Dependent Role="workhistory">
+              <PropertyRef Name="FK_MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobdetailscompanyrefernce">
+          <End Role="lkpcompany" Type="Self.lkpcompany" Multiplicity="0..1" />
+          <End Role="jobdetails" Type="Self.jobdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkpcompany">
+              <PropertyRef Name="PK_CompanyID" />
+            </Principal>
+            <Dependent Role="jobdetails">
+              <PropertyRef Name="FK_CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobdetailsdesginationrefernce">
+          <End Role="lkpcategory" Type="Self.lkpcategory" Multiplicity="0..1" />
+          <End Role="jobdetails" Type="Self.jobdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkpcategory">
+              <PropertyRef Name="PK_CategoryID" />
+            </Principal>
+            <Dependent Role="jobdetails">
+              <PropertyRef Name="FK_CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobdetailsemployementrefernce">
+          <End Role="lkpemployement_type" Type="Self.lkpemployement_type" Multiplicity="0..1" />
+          <End Role="jobdetails" Type="Self.jobdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkpemployement_type">
+              <PropertyRef Name="PK_EmployementID" />
+            </Principal>
+            <Dependent Role="jobdetails">
+              <PropertyRef Name="FK_EmployementID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobdetailsexperiencerefernce">
+          <End Role="lkpexperiencetype" Type="Self.lkpexperiencetype" Multiplicity="0..1" />
+          <End Role="jobdetails" Type="Self.jobdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkpexperiencetype">
+              <PropertyRef Name="PK_ExpericeID" />
+            </Principal>
+            <Dependent Role="jobdetails">
+              <PropertyRef Name="FK_ExpericeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobdetailssountryrefernce">
+          <End Role="lkpcountry" Type="Self.lkpcountry" Multiplicity="0..1" />
+          <End Role="jobdetails" Type="Self.jobdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkpcountry">
+              <PropertyRef Name="PK_CountryID" />
+            </Principal>
+            <Dependent Role="jobdetails">
+              <PropertyRef Name="FK_CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobdetailsstaterefernce">
+          <End Role="lkpState" Type="Self.lkpState" Multiplicity="0..1" />
+          <End Role="jobdetails" Type="Self.jobdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkpState">
+              <PropertyRef Name="PK_StateID" />
+            </Principal>
+            <Dependent Role="jobdetails">
+              <PropertyRef Name="FK_StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CountrystateID">
+          <End Role="lkpcountry" Type="Self.lkpcountry" Multiplicity="0..1" />
+          <End Role="lkpState" Type="Self.lkpState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkpcountry">
+              <PropertyRef Name="PK_CountryID" />
+            </Principal>
+            <Dependent Role="lkpState">
+              <PropertyRef Name="FK_CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SankeerthiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="careerdetails" EntityType="Self.careerdetail" />
+          <EntitySet Name="educationdetails" EntityType="Self.educationdetail" />
+          <EntitySet Name="jobdetails" EntityType="Self.jobdetail" />
+          <EntitySet Name="languageproficiencies" EntityType="Self.languageproficiency" />
+          <EntitySet Name="lkpcategories" EntityType="Self.lkpcategory" />
+          <EntitySet Name="lkpcompanies" EntityType="Self.lkpcompany" />
+          <EntitySet Name="lkpcountries" EntityType="Self.lkpcountry" />
+          <EntitySet Name="lkpemployement_type" EntityType="Self.lkpemployement_type" />
+          <EntitySet Name="lkpexperiencetypes" EntityType="Self.lkpexperiencetype" />
+          <EntitySet Name="lkpStates" EntityType="Self.lkpState" />
+          <EntitySet Name="personaldetails" EntityType="Self.personaldetail" />
+          <EntitySet Name="usertables" EntityType="Self.usertable" />
+          <EntitySet Name="workhistories" EntityType="Self.workhistory" />
+          <AssociationSet Name="FK_EducationDetailsMemberID" Association="Self.FK_EducationDetailsMemberID">
+            <End Role="careerdetails" EntitySet="careerdetails" />
+            <End Role="educationdetails" EntitySet="educationdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LanguageProficiencyMemberID" Association="Self.FK_LanguageProficiencyMemberID">
+            <End Role="careerdetails" EntitySet="careerdetails" />
+            <End Role="languageproficiency" EntitySet="languageproficiencies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalDetailsMemberID" Association="Self.FK_PersonalDetailsMemberID">
+            <End Role="careerdetails" EntitySet="careerdetails" />
+            <End Role="personaldetail" EntitySet="personaldetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkhistoryMemberID" Association="Self.FK_WorkhistoryMemberID">
+            <End Role="careerdetails" EntitySet="careerdetails" />
+            <End Role="workhistory" EntitySet="workhistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobdetailscompanyrefernce" Association="Self.FK_Jobdetailscompanyrefernce">
+            <End Role="lkpcompany" EntitySet="lkpcompanies" />
+            <End Role="jobdetails" EntitySet="jobdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobdetailsdesginationrefernce" Association="Self.FK_Jobdetailsdesginationrefernce">
+            <End Role="lkpcategory" EntitySet="lkpcategories" />
+            <End Role="jobdetails" EntitySet="jobdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobdetailsemployementrefernce" Association="Self.FK_Jobdetailsemployementrefernce">
+            <End Role="lkpemployement_type" EntitySet="lkpemployement_type" />
+            <End Role="jobdetails" EntitySet="jobdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobdetailsexperiencerefernce" Association="Self.FK_Jobdetailsexperiencerefernce">
+            <End Role="lkpexperiencetype" EntitySet="lkpexperiencetypes" />
+            <End Role="jobdetails" EntitySet="jobdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobdetailssountryrefernce" Association="Self.FK_Jobdetailssountryrefernce">
+            <End Role="lkpcountry" EntitySet="lkpcountries" />
+            <End Role="jobdetails" EntitySet="jobdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobdetailsstaterefernce" Association="Self.FK_Jobdetailsstaterefernce">
+            <End Role="lkpState" EntitySet="lkpStates" />
+            <End Role="jobdetails" EntitySet="jobdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CountrystateID" Association="Self.FK_CountrystateID">
+            <End Role="lkpcountry" EntitySet="lkpcountries" />
+            <End Role="lkpState" EntitySet="lkpStates" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SankeerthiModelStoreContainer" CdmEntityContainer="SankeerthiEntities">
+          <EntitySetMapping Name="careerdetails">
+            <EntityTypeMapping TypeName="SankeerthiModel.careerdetail">
+              <MappingFragment StoreEntitySet="careerdetails">
+                <ScalarProperty Name="PK_MemberID" ColumnName="PK_MemberID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="AdditionalInformation" ColumnName="AdditionalInformation" />
+                <ScalarProperty Name="CareerObjective" ColumnName="CareerObjective" />
+                <ScalarProperty Name="SpecialQualification" ColumnName="SpecialQualification" />
+                <ScalarProperty Name="Declaration" ColumnName="Declaration" />
+                <ScalarProperty Name="Resume" ColumnName="Resume" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="EmailAlert" ColumnName="EmailAlert" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="educationdetails">
+            <EntityTypeMapping TypeName="SankeerthiModel.educationdetail">
+              <MappingFragment StoreEntitySet="educationdetails">
+                <ScalarProperty Name="PK_EducationDetailsID" ColumnName="PK_EducationDetailsID" />
+                <ScalarProperty Name="FK_MemberID" ColumnName="FK_MemberID" />
+                <ScalarProperty Name="InstituteName" ColumnName="InstituteName" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="TimePeriod_From" ColumnName="TimePeriod_From" />
+                <ScalarProperty Name="TimePeriod_To" ColumnName="TimePeriod_To" />
+                <ScalarProperty Name="Ed_Description" ColumnName="Ed_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jobdetails">
+            <EntityTypeMapping TypeName="SankeerthiModel.jobdetail">
+              <MappingFragment StoreEntitySet="jobdetails">
+                <ScalarProperty Name="PK_JobID" ColumnName="PK_JobID" />
+                <ScalarProperty Name="FK_CategoryID" ColumnName="FK_CategoryID" />
+                <ScalarProperty Name="FK_EmployementID" ColumnName="FK_EmployementID" />
+                <ScalarProperty Name="FK_CompanyID" ColumnName="FK_CompanyID" />
+                <ScalarProperty Name="FK_CountryID" ColumnName="FK_CountryID" />
+                <ScalarProperty Name="FK_StateID" ColumnName="FK_StateID" />
+                <ScalarProperty Name="FK_ExpericeID" ColumnName="FK_ExpericeID" />
+                <ScalarProperty Name="jobdesgination" ColumnName="jobdesgination" />
+                <ScalarProperty Name="minsalary" ColumnName="minsalary" />
+                <ScalarProperty Name="maxsalary" ColumnName="maxsalary" />
+                <ScalarProperty Name="jobposteddate" ColumnName="jobposteddate" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="languageproficiencies">
+            <EntityTypeMapping TypeName="SankeerthiModel.languageproficiency">
+              <MappingFragment StoreEntitySet="languageproficiency">
+                <ScalarProperty Name="PK_LanguageProficiencyID" ColumnName="PK_LanguageProficiencyID" />
+                <ScalarProperty Name="FK_MemberID" ColumnName="FK_MemberID" />
+                <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkpcategories">
+            <EntityTypeMapping TypeName="SankeerthiModel.lkpcategory">
+              <MappingFragment StoreEntitySet="lkpcategory">
+                <ScalarProperty Name="PK_CategoryID" ColumnName="PK_CategoryID" />
+                <ScalarProperty Name="Categoryname" ColumnName="Categoryname" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkpcompanies">
+            <EntityTypeMapping TypeName="SankeerthiModel.lkpcompany">
+              <MappingFragment StoreEntitySet="lkpcompany">
+                <ScalarProperty Name="PK_CompanyID" ColumnName="PK_CompanyID" />
+                <ScalarProperty Name="companyname" ColumnName="companyname" />
+                <ScalarProperty Name="companytype" ColumnName="companytype" />
+                <ScalarProperty Name="emailid" ColumnName="emailid" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkpcountries">
+            <EntityTypeMapping TypeName="SankeerthiModel.lkpcountry">
+              <MappingFragment StoreEntitySet="lkpcountry">
+                <ScalarProperty Name="PK_CountryID" ColumnName="PK_CountryID" />
+                <ScalarProperty Name="countryname" ColumnName="countryname" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkpemployement_type">
+            <EntityTypeMapping TypeName="SankeerthiModel.lkpemployement_type">
+              <MappingFragment StoreEntitySet="lkpemployement_type">
+                <ScalarProperty Name="PK_EmployementID" ColumnName="PK_EmployementID" />
+                <ScalarProperty Name="employementtype" ColumnName="employementtype" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkpexperiencetypes">
+            <EntityTypeMapping TypeName="SankeerthiModel.lkpexperiencetype">
+              <MappingFragment StoreEntitySet="lkpexperiencetype">
+                <ScalarProperty Name="PK_ExpericeID" ColumnName="PK_ExpericeID" />
+                <ScalarProperty Name="experiencetype" ColumnName="experiencetype" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkpStates">
+            <EntityTypeMapping TypeName="SankeerthiModel.lkpState">
+              <MappingFragment StoreEntitySet="lkpState">
+                <ScalarProperty Name="PK_StateID" ColumnName="PK_StateID" />
+                <ScalarProperty Name="FK_CountryID" ColumnName="FK_CountryID" />
+                <ScalarProperty Name="statename" ColumnName="statename" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personaldetails">
+            <EntityTypeMapping TypeName="SankeerthiModel.personaldetail">
+              <MappingFragment StoreEntitySet="personaldetail">
+                <ScalarProperty Name="PK_MemberUserID" ColumnName="PK_MemberUserID" />
+                <ScalarProperty Name="FK_MemberID" ColumnName="FK_MemberID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usertables">
+            <EntityTypeMapping TypeName="SankeerthiModel.usertable">
+              <MappingFragment StoreEntitySet="usertable">
+                <ScalarProperty Name="PK_UserID" ColumnName="PK_UserID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="emailid" ColumnName="emailid" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="lastlogin" ColumnName="lastlogin" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="isadmin" ColumnName="isadmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="workhistories">
+            <EntityTypeMapping TypeName="SankeerthiModel.workhistory">
+              <MappingFragment StoreEntitySet="workhistory">
+                <ScalarProperty Name="PK_WorkHistoryID" ColumnName="PK_WorkHistoryID" />
+                <ScalarProperty Name="FK_MemberID" ColumnName="FK_MemberID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Desgination" ColumnName="Desgination" />
+                <ScalarProperty Name="TimePeriod_From" ColumnName="TimePeriod_From" />
+                <ScalarProperty Name="TimePeriod_To" ColumnName="TimePeriod_To" />
+                <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

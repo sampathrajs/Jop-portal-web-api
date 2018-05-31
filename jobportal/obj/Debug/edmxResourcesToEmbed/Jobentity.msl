@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="jobportalModelStoreContainer" CdmEntityContainer="jobportalEntities">
+    <EntitySetMapping Name="educationdetails">
+      <EntityTypeMapping TypeName="jobportalModel.educationdetail">
+        <MappingFragment StoreEntitySet="educationdetails">
+          <ScalarProperty Name="Ed_Description" ColumnName="Ed_Description" />
+          <ScalarProperty Name="TimePeriod_To" ColumnName="TimePeriod_To" />
+          <ScalarProperty Name="TimePeriod_From" ColumnName="TimePeriod_From" />
+          <ScalarProperty Name="Degree" ColumnName="Degree" />
+          <ScalarProperty Name="InstituteName" ColumnName="InstituteName" />
+          <ScalarProperty Name="FK_MemberID" ColumnName="FK_MemberID" />
+          <ScalarProperty Name="PK_EducationDetailsID" ColumnName="PK_EducationDetailsID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jobdetails">
+      <EntityTypeMapping TypeName="jobportalModel.jobdetail">
+        <MappingFragment StoreEntitySet="jobdetails">
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="jobposteddate" ColumnName="jobposteddate" />
+          <ScalarProperty Name="maxsalary" ColumnName="maxsalary" />
+          <ScalarProperty Name="minsalary" ColumnName="minsalary" />
+          <ScalarProperty Name="jobdesgination" ColumnName="jobdesgination" />
+          <ScalarProperty Name="FK_ExpericeID" ColumnName="FK_ExpericeID" />
+          <ScalarProperty Name="FK_StateID" ColumnName="FK_StateID" />
+          <ScalarProperty Name="FK_CountryID" ColumnName="FK_CountryID" />
+          <ScalarProperty Name="FK_CompanyID" ColumnName="FK_CompanyID" />
+          <ScalarProperty Name="FK_EmployementID" ColumnName="FK_EmployementID" />
+          <ScalarProperty Name="FK_CategoryID" ColumnName="FK_CategoryID" />
+          <ScalarProperty Name="PK_JobID" ColumnName="PK_JobID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="languageproficiencies">
+      <EntityTypeMapping TypeName="jobportalModel.languageproficiency">
+        <MappingFragment StoreEntitySet="languageproficiency">
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+          <ScalarProperty Name="FK_MemberID" ColumnName="FK_MemberID" />
+          <ScalarProperty Name="PK_LanguageProficiencyID" ColumnName="PK_LanguageProficiencyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lkpcategories">
+      <EntityTypeMapping TypeName="jobportalModel.lkpcategory">
+        <MappingFragment StoreEntitySet="lkpcategory">
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="Categoryname" ColumnName="Categoryname" />
+          <ScalarProperty Name="PK_CategoryID" ColumnName="PK_CategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lkpcompanies">
+      <EntityTypeMapping TypeName="jobportalModel.lkpcompany">
+        <MappingFragment StoreEntitySet="lkpcompany">
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="companytype" ColumnName="companytype" />
+          <ScalarProperty Name="companyname" ColumnName="companyname" />
+          <ScalarProperty Name="PK_CompanyID" ColumnName="PK_CompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lkpcountries">
+      <EntityTypeMapping TypeName="jobportalModel.lkpcountry">
+        <MappingFragment StoreEntitySet="lkpcountry">
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="countryname" ColumnName="countryname" />
+          <ScalarProperty Name="PK_CountryID" ColumnName="PK_CountryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lkpemployement_type">
+      <EntityTypeMapping TypeName="jobportalModel.lkpemployement_type">
+        <MappingFragment StoreEntitySet="lkpemployement_type">
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="employementtype" ColumnName="employementtype" />
+          <ScalarProperty Name="PK_EmployementID" ColumnName="PK_EmployementID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lkpexperiencetypes">
+      <EntityTypeMapping TypeName="jobportalModel.lkpexperiencetype">
+        <MappingFragment StoreEntitySet="lkpexperiencetype">
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="experiencetype" ColumnName="experiencetype" />
+          <ScalarProperty Name="PK_ExpericeID" ColumnName="PK_ExpericeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lkpStates">
+      <EntityTypeMapping TypeName="jobportalModel.lkpState">
+        <MappingFragment StoreEntitySet="lkpState">
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="statename" ColumnName="statename" />
+          <ScalarProperty Name="FK_CountryID" ColumnName="FK_CountryID" />
+          <ScalarProperty Name="PK_StateID" ColumnName="PK_StateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personaldetails">
+      <EntityTypeMapping TypeName="jobportalModel.personaldetail">
+        <MappingFragment StoreEntitySet="personaldetail">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="FK_MemberID" ColumnName="FK_MemberID" />
+          <ScalarProperty Name="PK_MemberUserID" ColumnName="PK_MemberUserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usertables">
+      <EntityTypeMapping TypeName="jobportalModel.usertable">
+        <MappingFragment StoreEntitySet="usertable">
+          <ScalarProperty Name="isadmin" ColumnName="isadmin" />
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+          <ScalarProperty Name="lastlogin" ColumnName="lastlogin" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="emailid" ColumnName="emailid" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="PK_UserID" ColumnName="PK_UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="workhistories">
+      <EntityTypeMapping TypeName="jobportalModel.workhistory">
+        <MappingFragment StoreEntitySet="workhistory">
+          <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+          <ScalarProperty Name="TimePeriod_To" ColumnName="TimePeriod_To" />
+          <ScalarProperty Name="TimePeriod_From" ColumnName="TimePeriod_From" />
+          <ScalarProperty Name="Desgination" ColumnName="Desgination" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="FK_MemberID" ColumnName="FK_MemberID" />
+          <ScalarProperty Name="PK_WorkHistoryID" ColumnName="PK_WorkHistoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="careerdetails">
+      <EntityTypeMapping TypeName="jobportalModel.careerdetail">
+        <MappingFragment StoreEntitySet="careerdetails">
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="Resume" ColumnName="Resume" />
+          <ScalarProperty Name="Declaration" ColumnName="Declaration" />
+          <ScalarProperty Name="SpecialQualification" ColumnName="SpecialQualification" />
+          <ScalarProperty Name="CareerObjective" ColumnName="CareerObjective" />
+          <ScalarProperty Name="AdditionalInformation" ColumnName="AdditionalInformation" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="PK_MemberID" ColumnName="PK_MemberID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
